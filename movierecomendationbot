@@ -1,0 +1,59 @@
+
+!pip install requests
+
+import requests
+
+#OMDB API Details
+OMDB_API_KEY = "2eee62"  
+SEARCH_QUERY = "top"   
+NUM_RESULTS = 5
+
+# UltraMsg WhatsApp API Details
+ULTRAMSG_INSTANCE_ID = ""  # Your UltraMsg Instance ID
+ULTRAMSG_TOKEN = ""       # Your UltraMsg token
+TO_PHONE_NUMBER = ""        #your phone number
+
+# 🔍 Step 1: Search movies
+def search_movies(query):
+    url = f"http://www.omdbapi.com/?apikey={OMDB_API_KEY}&s={query}"
+    response = requests.get(url)
+    data = response.json()
+    return data.get("Search", [])[:NUM_RESULTS]
+
+# 📄 Step 2: Get full details by IMDb ID
+def get_movie_details(imdb_id):
+    url = f"http://www.omdbapi.com/?apikey={OMDB_API_KEY}&i={imdb_id}"
+    response = requests.get(url)
+    return response.json()
+
+# 💬 Step 3: Send movie info to WhatsApp
+def send_whatsapp_message(message):
+    url = f"https://api.ultramsg.com/{ULTRAMSG_INSTANCE_ID}/messages/chat?token={ULTRAMSG_TOKEN}"
+    payload = {
+        "to": TO_PHONE_NUMBER,
+        "body": message
+    }
+    headers = {"Content-Type": "application/json"}
+    response = requests.post(url, json=payload, headers=headers)
+    print("✅ Sent:", response.json())
+
+
+# ▶️ Main Function
+def run_movie_bot():
+    results = search_movies(SEARCH_QUERY)
+    if not results:
+        send_whatsapp_message("❌ No movies found.")
+        return
+
+    for movie in results:
+        details = get_movie_details(movie["imdbID"])
+        msg = (
+            f"🎬 *{details['Title']}* ({details['Year']})\n"
+            f"⭐ IMDb: {details.get('imdbRating', 'N/A')}\n"
+            f"📝 {details.get('Plot', 'No plot available.')}\n"
+            f"📎 Poster: {details.get('Poster')}"
+        )
+        send_whatsapp_message(msg)
+
+# 🚀 Run It
+run_movie_bot()
