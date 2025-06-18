@@ -1,76 +1,86 @@
-# movierecomendationbot
-This project is an AI-powered WhatsApp Movie Bot that delivers the latest or trending movie recommendations directly to your WhatsApp using the OMDB API and UltraMsg WhatsApp API. It fetches movie data like title, plot, IMDb rating, and poster, and sends it in a user-friendly format to your WhatsApp number
 
 
+## 📲 WhatsApp Movie Bot – OMDB + UltraMsg + Gradio
 
----
-
-# 🎬 WhatsApp Movie Bot using OMDB API & UltraMsg
-
-This project is an AI-powered Python bot that sends movie recommendations directly to your WhatsApp using the **OMDB API** and **UltraMsg WhatsApp API**. It's designed to fetch real-time movie details such as title, plot, IMDb rating, and poster, and send them in a clean format using a few lines of code — perfect for movie lovers and developers learning about API automation.
+Get the latest movie suggestions sent straight to your WhatsApp by just typing a keyword (like “action”, “romantic”, or “batman”) into a simple web interface. This project combines the power of the **OMDB Movie API**, **UltraMsg WhatsApp API**, and **Gradio** to build a cool, real-time movie recommendation bot!
 
 ---
 
-## 📌 Features
+### 🚀 Live Demo
 
-* 🔍 Search for any movie keyword (e.g., "Avengers", "Drama", "2023")
-* 📦 Retrieves full movie data from OMDB (IMDb-backed)
-* 📲 Sends movie info directly to your WhatsApp using UltraMsg API
-* 🛠️ Built to run easily on Google Colab (no local setup required)
-* 🎯 Can be scheduled for daily recommendations or used on-demand
+👉 Try it now: [https://68142bca8c6ebaa5a4.gradio.live](https://68142bca8c6ebaa5a4.gradio.live)
 
 ---
 
-## 🧰 Tech Stack
+### 🧠 Features
 
-* Python (Requests Library)
-* OMDB API ([https://www.omdbapi.com/](https://www.omdbapi.com/))
-* UltraMsg WhatsApp API ([https://ultramsg.com](https://ultramsg.com))
-* Google Colab (for easy cloud execution)
-
----
-
-## 🚀 How to Use
-
-1. **Clone or Copy the Code** into [Google Colab](https://colab.research.google.com).
-2. **Get Your API Keys**:
-
-   * [OMDB API Key](https://www.omdbapi.com/apikey.aspx)
-   * [UltraMsg WhatsApp API Key & Instance ID](https://app.ultramsg.com/)
-3. **Replace the placeholders** in the script with your API keys and WhatsApp number.
-4. **Run the script** — you'll receive movie info on WhatsApp instantly!
+* 🔍 Search for movies by keyword (e.g. genre, year, title)
+* 🎬 Gets top 3 movies from OMDB API
+* 💬 Sends movie info (title, year, rating, plot, poster) to your WhatsApp
+* 🖥️ Clean and simple Gradio web interface
+* ☁️ Fully deployable from Google Colab
 
 ---
 
-## 🧠 Example Output
+### 🛠️ Tech Stack
 
+| Tool                                  | Purpose                         |
+| ------------------------------------- | ------------------------------- |
+| [OMDB API](https://www.omdbapi.com/)  | Fetch movie data                |
+| [UltraMsg API](https://ultramsg.com/) | Send WhatsApp messages          |
+| [Gradio](https://gradio.app/)         | Web UI for user input           |
+| Python                                | Backend logic                   |
+| Google Colab                          | Hosting and testing environment |
+
+---
+
+### 📦 How It Works
+
+1. User types a movie keyword in the Gradio web app
+2. Python code fetches top movie results using OMDB
+3. For each movie, the bot composes a WhatsApp message with:
+
+   * Title, Year, IMDb Rating
+   * Plot Summary
+   * Poster link
+4. UltraMsg API sends the messages to the user's WhatsApp
+
+---
+
+### 🔑 Setup Instructions (For Local Use)
+
+```bash
+# 1. Clone the repo or copy code to your local system
+git clone https://github.com/YOUR_USERNAME/whatsapp-movie-bot.git
+
+# 2. Install dependencies
+pip install requests gradio
+
+# 3. Replace config with your own keys in the script:
+# - OMDB_API_KEY
+# - ULTRAMSG_INSTANCE_ID
+# - ULTRAMSG_TOKEN
+# - TO_PHONE_NUMBER (your WhatsApp number, no "+")
+
+# 4. Run the app
+python whatsapp_movie_bot.py
 ```
-🎬 Interstellar (2014)
-⭐ IMDb: 8.6
-📝 A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.
-📎 Poster: https://...
-```
 
 ---
 
-## 💡 Future Enhancements
 
-* Search by genre or IMDb rating filters
-* Add movie trailers using YouTube Data API
-* Build a web UI using Flask or React
-* Voice-based search using Speech Recognition
+### 💡 Future Improvements
 
----
-
-## 🙌 Contributing
-
-Pull requests are welcome. Feel free to fork this repo, create a feature branch, and submit a PR.
+* User can choose number of results to send
+* Filter by IMDb rating or genre
+* Daily movie digest via WhatsApp scheduler
+* Convert into a mobile app UI using Streamlit or Flutter
 
 ---
 
-## 📧 Contact
+### 🙌 Credits
 
-Made with 💻 by [Yugandhar](https://www.linkedin.com/in/yugandhar-p21032003/)
-Feel free to connect if you're interested in AI bots, movie APIs, or WhatsApp automation!
+Built by **Yugandhar** using open APIs and tools.
+Inspired by the idea of making smart agents useful on daily communication platforms.
 
 ---
